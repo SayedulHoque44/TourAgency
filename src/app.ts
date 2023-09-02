@@ -7,6 +7,14 @@ import helmet from 'helmet';
 import hpp from 'hpp';
 import mongoose from 'mongoose';
 import morgan from 'morgan';
+import bookingRouter from './routes/booking.route';
+import locationRouter from './routes/location.route';
+import paymentRouter from './routes/payment.route';
+import resortRouter from './routes/resort.route';
+import restaurantRouter from './routes/restaurant.route';
+import spotRouter from './routes/spot.route';
+import tourPackageRouter from './routes/tour_package.route';
+import userRouter from './routes/user.route';
 
 class App {
   private app: Application;
@@ -40,6 +48,16 @@ class App {
         message: 'Server is up and running, waiting for human to handle! 😎',
       });
     });
+
+    // bypassed routes
+    this.app.use('/api/users', userRouter);
+    this.app.use('/api/locations', locationRouter);
+    this.app.use('/api/locations/:id/spots', spotRouter);
+    this.app.use('/api/locations/:id/resorts', resortRouter);
+    this.app.use('/api/locations/:id/restaurants', restaurantRouter);
+    this.app.use('/api/locations/:id/tour_packages', tourPackageRouter);
+    this.app.use('/api/bookings', bookingRouter);
+    this.app.use('/api/payments', paymentRouter);
   }
 
   private connectToDatabase(): void {
