@@ -49,13 +49,13 @@ class App {
       });
     });
 
-    // bypassed routes
+    // bypassed routes this.app.use('base url', porer routes gula);
     this.app.use('/api/users', userRouter);
     this.app.use('/api/locations', locationRouter);
-    this.app.use('/api/locations/:id/spots', spotRouter);
-    this.app.use('/api/locations/:id/resorts', resortRouter);
-    this.app.use('/api/locations/:id/restaurants', restaurantRouter);
-    this.app.use('/api/locations/:id/tour_packages', tourPackageRouter);
+    this.app.use('/api/locations', spotRouter);
+    this.app.use('/api/locations', resortRouter);
+    this.app.use('/api/locations', restaurantRouter);
+    this.app.use('/api/locations', tourPackageRouter);
     this.app.use('/api/bookings', bookingRouter);
     this.app.use('/api/payments', paymentRouter);
   }

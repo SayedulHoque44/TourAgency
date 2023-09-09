@@ -32,6 +32,7 @@ export default class AuthMiddleware {
 
     try {
       const payload = jwtTokenManager.verifyToken(token) as JwtPayload;
+      // console.log(payload); //Ex: { id: '64f6d16ec85ba1328f8c7102', iat: 1693897167, exp: 1694501967 }
       const user = await UserModel.findById(payload.id);
 
       if (!user) {
